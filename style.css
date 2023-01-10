@@ -1,0 +1,19 @@
+.salmon-table {
+  width: 90vw;
+  border: 5px solid black;
+  text-align: center;
+  margin: auto;
+}
+
+.table-head-total {
+  border: 2px solid black;
+}
+
+.table-hour {
+  /* border: 1px solid black; */
+}
+
+td,
+th {
+  border-bottom: 2px solid black;
+}
