@@ -1,16 +1,64 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+}
+
+body {
+  background-color: salmon;
+}
+
+img {
+  width: 30vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav-bar {
+  background-color: aqua;
+  margin: 10px 0 10px 0;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  /* border: 2px solid black; */
+  width: 15vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: larger;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: salmon;
+}
+
 .salmon-table {
   width: 90vw;
-  border: 5px solid black;
+  border: 4px solid black;
   text-align: center;
   margin: auto;
+  background-color: aqua;
 }
 
-.table-head-total {
+.table-head-total,
+.overall-total {
   border: 2px solid black;
-}
-
-.table-hour {
-  /* border: 1px solid black; */
+  background-color: salmon;
 }
 
 td,

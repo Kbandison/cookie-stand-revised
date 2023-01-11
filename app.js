@@ -21,6 +21,12 @@ let openHours = [
 
 let stores = [];
 
+let hourlyTotals = [];
+
+let overAllTotal = 0;
+
+let result;
+
 let randomCustPerHr = (min, max) =>
   Math.floor(Math.random() * (max - min) + min);
 
@@ -55,18 +61,43 @@ City.prototype.getCookiesSoldPerHr = () => {
       s.cookiesSoldPerHr.push(cookiePerHr);
       s.totalCookies += cookiePerHr;
     });
-    // console.log(s.cookiesSoldPerHr);
+    hourlyTotals.push(s.cookiesSoldPerHr);
     // console.log(s.totalCookies);
   });
+  // console.log(hourlyTotals);
+};
+
+City.prototype.getStoreTotals = () => {
+  let hourlyTotal = 0;
+  let hourlyArr = [];
+  // console.log(hourlyTotals);
+
+  stores.forEach((s, i) => {
+    result = hourlyTotals.reduce((a, b) => a.map((c, i) => c + b[i]));
+
+    s.cookiesSoldPerHr.forEach((c) => {
+      overAllTotal += c;
+    });
+    // console.log(s.cookiesSoldPerHr);
+    // console.log(overAllTotal);
+  });
+
+  // console.log(result);
 };
 
 City.prototype.render = () => {
   let table = document.createElement("table");
+
   let tableHead = document.createElement("thead");
-  let tableBody = document.createElement("tbody");
   let tableHeadRow = document.createElement("tr");
+
+  let tableBody = document.createElement("tbody");
   let blankHead = document.createElement("th");
   let totalHead = document.createElement("th");
+
+  let totalRow = document.createElement("tr");
+  let hourlyTotalHead = document.createElement("th");
+  let overallTotal = document.createElement("th");
 
   table.className = "salmon-table";
   tableHead.className = "table-head";
@@ -74,8 +105,12 @@ City.prototype.render = () => {
   tableHeadRow.className = "table-times";
   blankHead.className = "table-head-blank";
   totalHead.className = "table-head-total";
+  overallTotal.className = "overall-total";
 
-  totalHead.textContent = "Total";
+  totalHead.textContent = "Day Total";
+  hourlyTotalHead.textContent = "Hour Total";
+
+  totalRow.appendChild(hourlyTotalHead);
 
   tableHeadRow.appendChild(blankHead);
   tableHead.appendChild(tableHeadRow);
@@ -88,9 +123,14 @@ City.prototype.render = () => {
     times.className = "table-hour";
 
     times.textContent = openHours[j];
+    overallTotal.textContent = overAllTotal;
 
     tableHead.appendChild(times);
     tableHeadRow.appendChild(times);
+
+    let hourTotal = document.createElement("td");
+    hourTotal.textContent = result[j];
+    totalRow.appendChild(hourTotal);
   }
 
   stores.forEach((i) => {
@@ -102,7 +142,7 @@ City.prototype.render = () => {
     location.className = "table-city";
     totalCookies.className = "table-city-total";
 
-    totalCookies.textContent = `${i.totalCookies} `;
+    totalCookies.textContent = i.totalCookies;
     location.textContent = i.city;
 
     tableRow.appendChild(location);
@@ -123,10 +163,16 @@ City.prototype.render = () => {
     store.appendChild(table);
   });
 
+  totalRow.appendChild(overallTotal);
+
+  tableBody.appendChild(totalRow);
+
   tableHeadRow.appendChild(totalHead);
 };
+// console.log("Bottom" + totalFromEachHour);
 
 for (let i = 0; i < 1; i++) {
   stores[i].getCookiesSoldPerHr();
+  stores[i].getStoreTotals();
   stores[i].render();
 }
