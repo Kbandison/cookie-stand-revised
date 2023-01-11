@@ -101,6 +101,7 @@ City.prototype.render = () => {
 
   table.className = "salmon-table";
   tableHead.className = "table-head";
+  hourlyTotalHead.className = "hourly-total-head";
   tableBody.className = "table-body";
   tableHeadRow.className = "table-times";
   blankHead.className = "table-head-blank";
@@ -119,8 +120,10 @@ City.prototype.render = () => {
 
   for (let j = 0; j < openHours.length; j++) {
     let times = document.createElement("th");
+    let hourTotal = document.createElement("th");
 
     times.className = "table-hour";
+    hourTotal.className = "hour-total";
 
     times.textContent = openHours[j];
     overallTotal.textContent = overAllTotal;
@@ -128,7 +131,6 @@ City.prototype.render = () => {
     tableHead.appendChild(times);
     tableHeadRow.appendChild(times);
 
-    let hourTotal = document.createElement("td");
     hourTotal.textContent = result[j];
     totalRow.appendChild(hourTotal);
   }

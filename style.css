@@ -56,6 +56,7 @@ a:hover {
 }
 
 .table-head-total,
+.hourly-total-head,
 .overall-total {
   border: 2px solid black;
   background-color: salmon;
