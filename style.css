@@ -66,3 +66,49 @@ td,
 th {
   border-bottom: 2px solid black;
 }
+
+.store-body {
+  margin-top: 3vh;
+}
+
+h2 {
+  text-align: center;
+}
+
+.display {
+  display: flex;
+  gap: 4vw;
+  margin-top: 7vh;
+  align-items: center;
+}
+
+.left {
+  margin-left: 15vw;
+}
+.right {
+  margin-right: 15vw;
+  justify-content: right;
+}
+
+.info {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.locations {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vw;
+}
+
+.location-div {
+  border: 2px solid black;
+  padding: 2vw;
+  width: 45vw;
+  background-color: aqua;
+  margin: 2vw;
+}
+
+.locations img {
+  width: 18vw;
+}
