@@ -107,8 +107,39 @@ h2 {
   width: 45vw;
   background-color: aqua;
   margin: 2vw;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .locations img {
   width: 18vw;
+}
+
+.locaion-info {
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.store-form {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  justify-content: center;
+}
+
+.store-form-div {
+  display: flex;
+  justify-content: center;
+  margin: 5vw 0 7vw 0;
+  /* border: 2px solid black; */
+  width: 30vw;
+}
+
+.form-input {
+  margin: 1vw;
+}
+
+.sales {
+  display: flex;
+  justify-content: center;
 }
